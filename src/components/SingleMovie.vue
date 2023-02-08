@@ -8,23 +8,23 @@ export default {
         return {
             listFlags: [
                 {
-                    img: 'img/italy.svg',
+                    img: "img/italy.png",
                     lang: "it"
                 },
                 {
-                    img: 'img/france.svg',
+                    img: "img/france.png",
                     lang: "fr"
                 },
                 {
-                    img: 'img/united_kingdom.svg',
+                    img: "img/united_kingdom.png",
                     lang: "en"
                 },
                 {
-                    img: 'img/spain.svg',
+                    img: "img/spain.png",
                     lang: "es"
                 },
                 {
-                    img: 'img/germany.svg',
+                    img: "img/germany.png",
                     lang: "de"
                 }
             ]
