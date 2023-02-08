@@ -17,7 +17,7 @@ export default {
 
 <template>
     <section>
-        <div class="movies">
+        <div class="movies container">
             <SingleMovie v-for="(movie, index) in store.movieList" :key="index" :details="movie" />
         </div>
     </section>
@@ -27,5 +27,6 @@ export default {
 .movies {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 120px;
 }
 </style>
