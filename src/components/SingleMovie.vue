@@ -38,6 +38,10 @@ export default {
                 }
             }
             return this.listFlags[this.listFlags.length - 1].img;
+        },
+
+        getVote() {
+            return Math.round(this.details.vote_average / 2);
         }
     }
 }
@@ -59,7 +63,15 @@ export default {
             <img :src="assignFlags" alt="" class="bandiera">
         </div>
         <div>Language: {{ details.original_language }}</div>
-        <div>{{ details.vote_average }}</div>
+        <div class="stars">
+            <span>Voto:</span>
+            <div v-for="star in getVote">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div v-for="star in 5 - getVote">
+                <i class="fa-regular fa-star"></i>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -70,5 +82,9 @@ export default {
 
 .bandiera {
     width: 40px;
+}
+
+.stars {
+    display: flex;
 }
 </style>
