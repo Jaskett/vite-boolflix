@@ -17,9 +17,6 @@ export default {
 
 <template>
     <section>
-        <input type="text">
-        <button>Search</button>
-
         <div class="movies">
             <SingleMovie v-for="(movie, index) in store.movieList" :key="index" :details="movie" />
         </div>
