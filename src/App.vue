@@ -1,5 +1,17 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import { store } from './store.js';
+import HelloWorld from './components/HelloWorld.vue';
+
+export default {
+  components: {
+    HelloWorld
+  },
+  data() {
+    return {
+      store
+    }
+  }
+}
 </script>
 
 <template>
