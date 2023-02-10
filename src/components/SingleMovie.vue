@@ -69,7 +69,7 @@ export default {
 
                 <div v-else-if="details.name">
                     <div>
-                        <span>Titolo serie TV:</span>
+                        <span class="title">Titolo serie TV:</span>
                         {{ details.name }}
                     </div>
                     <div v-if="details.original_name !== details.name">
@@ -84,7 +84,7 @@ export default {
                     <img :src="assignFlags" alt="" class="flag-image">
                 </div>
 
-                <div class="star">
+                <div class="stars">
                     <span class="title">Voto:</span>
                     <div v-for="star in getVote" class="star">
                         <i class="fa-solid fa-star"></i>
@@ -125,6 +125,7 @@ export default {
             position: absolute;
             top: 0;
             left: 0;
+            height: 100%;
             padding: 5px 8px;
             background-color: rgba(0, 0, 0, 0.849);
             border: 1px solid $red-color;

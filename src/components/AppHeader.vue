@@ -16,14 +16,13 @@ export default {
         <h1>Boolflix</h1>
         <div class="search">
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" v-model="store.searchTitle">
+            <input type="text" v-model="store.searchTitle" placeholder="Cerca un film o una serie TV">
             <button type="submit" @click.prevent="$emit('searchMovie')">Search</button>
         </div>      
     </header>
 </template>
 
 <style lang="scss" scoped>
-@use "../styles/main.scss" as *;
 @use "../styles/partials/reset.scss" as *;
 @use "../styles/partials/mixins.scss" as *;
 
@@ -32,7 +31,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 50000;
+    z-index: 2;
     background-color: $bg-color;
     height: 70px;
     @include flex (both);
@@ -55,6 +54,7 @@ header {
         }
 
         .fa-magnifying-glass {
+            border: 1px solid $white-txt;
             border-top-left-radius: 5px;
             border-bottom-left-radius: 5px;
             border-right: 1px solid $black-color;
