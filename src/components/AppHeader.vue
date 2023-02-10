@@ -7,77 +7,72 @@ export default {
         return {
             store
         }
+    },
+    methods: {
+        searchFunction() {
+            store.validSearch = true;
+            store.results = [];
+            let searchQuery = store.searchText;
+            let seriesUrl = `${store.api_series_url}api_key=${store.api_key}&query=${searchQuery}`;
+            let movieUrl = `${store.api_movie_url}api_key=${store.api_key}&query=${searchQuery}`;
+            store.callApi(seriesUrl);
+            store.callApi(movieUrl);
+            store.searchText = ""
+            setTimeout(() => {
+                store.validSearch = false;
+            }, 1000);
+        }
     }
 }
 </script>
 
 <template>
-    <header>
-        <h1>Boolflix</h1>
-        <div class="search">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" v-model="store.searchTitle" placeholder="Cerca un film o una serie TV">
-            <button type="submit" @click.prevent="$emit('searchMovie')">Search</button>
-        </div>      
-    </header>
+    <div id="site_header" class="d-flex justify-content-between aling-items-center">
+        <div class="my_navbar">
+            <h1>Boolflix</h1>
+            <span class="nav_links"><a href="#">Home</a></span>
+            <span class="nav_links"><a href="#">Serie TV</a></span>
+            <span class="nav_links"><a href="#">Film</a></span>
+            <span class="nav_links"><a href="#">Nuovi e popolari</a></span>
+            <span class="nav_links"><a href="#">La mia lista</a></span>
+            <span class="nav_links"><a href="#">Sfoglia per lingua</a></span>
+        </div>
+
+        <div class="search_bar">
+            <input placeholder="Search" v-model="store.searchText" @keyup.enter="searchFunction">
+            <button class="ms-2 rounded" @click="searchFunction">Search</button>
+        </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
 @use "../styles/partials/reset.scss" as *;
-@use "../styles/partials/mixins.scss" as *;
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 2;
-    background-color: $bg-color;
-    height: 70px;
-    @include flex (both);
-    padding: 0 15px;
+#site_header {
+    padding: 0 20px 0 20px;
 
-    h1 {
-        font-size: 40px;
-        color: $red-color;
-        font-weight: bolder;
-    }
-
-    .search {
-        @include flex("center");
-
-        .fa-magnifying-glass,
-        input,
-        button {
-            height: 30px;
-            padding: 0 10px;
+    .my_navbar {
+        h1 {
+            padding-right: 24px;
+            color: $red-color;
         }
 
-        .fa-magnifying-glass {
-            border: 1px solid $white-txt;
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            border-right: 1px solid $black-color;
-            line-height: 30px;
-        }
+        span {
+            padding-left: 16px;
 
-        input {
-            display: inline-block;
-            width: 300px;
-            margin-right: 10px;
-        }
+            a {
+                text-decoration: none;
+                color: $white-txt;
 
-        button {
-            background-color: $red-color;
-            border: 1px solid $red-color;
-            color: $white-txt;
-            border-radius: 10px;
-            font-weight: bolder;
-
-            &:hover {
-                background-color: #ed575f;
+                &:hover {
+                    color: gray;
+                }
             }
         }
+    }
+
+    .search_bar {
+        margin-top: 24px;
     }
 }
 </style>
